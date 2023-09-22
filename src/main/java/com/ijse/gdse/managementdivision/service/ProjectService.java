@@ -10,6 +10,6 @@ import com.ijse.gdse.managementdivision.dto.ProjectDTO;
 public interface ProjectService {
     ProjectDTO saveProject (ProjectDTO projectDTO);
     void deleteProject (int prID);
-    void updateProject (ProjectDTO projectDTO);
+    void updateProject (ProjectDTO projectDTO) throws ClassNotFoundException;
     ProjectDTO getProjectByID (int tlID);
 }

@@ -78,4 +78,15 @@ public class ProjectDTO {
     public void setTechLead(TechLead techLead) {
         this.techLead = techLead;
     }
+
+    @Override
+    public String toString() {
+        return "ProjectDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", cost=" + cost +
+                ", date=" + date +
+                ", techLead=" + techLead +
+                '}';
+    }
 }

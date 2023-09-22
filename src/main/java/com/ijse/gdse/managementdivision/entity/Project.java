@@ -85,4 +85,15 @@ public class Project implements SuperEntity {
     public void setTechLead(TechLead techLead) {
         this.techLead = techLead;
     }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", cost=" + cost +
+                ", date=" + date +
+                ", techLead=" + techLead +
+                '}';
+    }
 }

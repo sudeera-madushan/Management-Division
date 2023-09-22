@@ -26,7 +26,7 @@ public class TechLead implements SuperEntity{
     private Double salary;
     @Column(nullable = false,columnDefinition = "Text")
     private String profile;
-    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "id", cascade = CascadeType.REMOVE)
     private List<Project> projectList;
 
     public TechLead(String name, int age, Double salary, String profile, List<Project> projectList) {
@@ -99,5 +99,17 @@ public class TechLead implements SuperEntity{
 
     public void setProjectList(List<Project> projectList) {
         this.projectList = projectList;
+    }
+
+    @Override
+    public String toString() {
+        return "TechLead{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", salary=" + salary +
+                ", profile='" + profile + '\'' +
+                ", projectList=" + projectList +
+                '}';
     }
 }

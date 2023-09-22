@@ -2,6 +2,7 @@ package com.ijse.gdse.managementdivision.api;
 
 import com.ijse.gdse.managementdivision.dto.TechLeadDTO;
 import com.ijse.gdse.managementdivision.entity.Project;
+import com.ijse.gdse.managementdivision.exception.InvalidException;
 import com.ijse.gdse.managementdivision.repository.TechLeadRepo;
 import com.ijse.gdse.managementdivision.service.TechLeadService;
 import com.ijse.gdse.managementdivision.util.EntityDTOConversion;
@@ -38,13 +39,22 @@ public class TechLeadController {
             @RequestPart String salary,
            @RequestPart byte [] profile
     ){
+        if(name == null || !name.matches("[A-Za-z ]+")){
+            throw new InvalidException("Invalid Name");
+        } else if (age== null) {
+            throw new InvalidException("Invalid Age");
+        } else if (salary == null) {
+            throw new InvalidException("Invalid Salary");
+        } else if (profile== null) {
+            throw new InvalidException("Invalid Profile");
+        }
         return tlService.saveTechLead(new TechLeadDTO(name,
                 Integer.parseInt(age),
                 Double.parseDouble(salary),
                 Base64.getEncoder().encodeToString(profile),
                 null));
     }
-    @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PatchMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     String updateTechLead(
             @RequestPart String id,
             @RequestPart String name,
@@ -52,6 +62,17 @@ public class TechLeadController {
             @RequestPart String salary,
            @RequestPart byte [] profile
     ){
+        if(id == null){
+            throw new InvalidException("Invalid ID");
+        }else if(name == null || !name.matches("[A-Za-z ]+")){
+            throw new InvalidException("Invalid Name");
+        } else if (age== null) {
+            throw new InvalidException("Invalid Age");
+        } else if (salary == null) {
+            throw new InvalidException("Invalid Salary");
+        } else if (profile== null) {
+            throw new InvalidException("Invalid Profile");
+        }
         tlService.updateTechLead(new TechLeadDTO(
                 Integer.parseInt(id),
                 name,

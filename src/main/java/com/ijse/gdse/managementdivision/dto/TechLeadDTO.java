@@ -90,4 +90,16 @@ public class TechLeadDTO {
     public void setOrdersList(List<Project> ordersList) {
         this.ordersList = ordersList;
     }
+
+    @Override
+    public String toString() {
+        return "TechLeadDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", salary=" + salary +
+                ", profile='" + profile + '\'' +
+                ", ordersList=" + ordersList +
+                '}';
+    }
 }
